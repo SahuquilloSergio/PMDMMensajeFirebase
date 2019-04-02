@@ -137,7 +137,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onChildChanged(p0: DataSnapshot, p1: String?) {
-                /**
+                git
                 // creo un objeto para recojer los datos cambiados
                 var misDatosCambiados = Datos("","", numeroJugador, aleatorio, Date())
 
@@ -168,8 +168,8 @@ class MainActivity : AppCompatActivity() {
                     tv4.setText("Numero de Intentos: "+nintentos)
 
                 }
-            )
-**/
+            }
+
             override fun onChildMoved(p0: DataSnapshot, p1: String?) {
                 Log.d(TAG, "Datos movidos")
             }

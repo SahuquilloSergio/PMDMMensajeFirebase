@@ -1,4 +1,4 @@
-/**
+
 package com.pmdm.sauky.mensajefirebase
 
 import java.util.*
@@ -22,4 +22,4 @@ data class Datos(var token: String = "", var nombre: String = "", var numeroJuga
         miHashMapDatos.put("numeroIA", aleatorio)
         miHashMapDatos.put("hora", hora)
     }
-}**/
+}
