@@ -24,6 +24,7 @@ import org.w3c.dom.Text
 
 
 class MainActivity : AppCompatActivity() {
+
     //Declaramos las variables que usaremos
     val TAG = "Servicio"
     var aleatorio: Int = 0
@@ -31,15 +32,10 @@ class MainActivity : AppCompatActivity() {
     var numeroJugador: Int = 0
     var nintentos: Int = 3
     lateinit var snumeroJugador: String
-    var aleatoriorecibido: Int = 0
-    var numeroJugadorRecibido: Int = 0
-    lateinit var snintentos: String
     lateinit var cajaNum: EditText
     lateinit var cajaMostrar: TextView
-    lateinit var benviar: Button
     lateinit var baleatorio: Button
     lateinit var texto: Toast
-    lateinit var cajaIntentos: TextView
     lateinit var tv4: TextView
 
     // referencia de la base de datos
@@ -54,16 +50,13 @@ class MainActivity : AppCompatActivity() {
     val miHashMapChild = HashMap<String, Any>()
 
 
-
-
-
-
+    //Al iniciar la aplicacion
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        //Recojemos referencias del xml
+        //Referencias del xml de la interfaz
         cajaNum = findViewById(R.id.editText)
         baleatorio = findViewById(R.id.botonAleatorio)
         cajaMostrar = findViewById(R.id.textoBD)
@@ -75,7 +68,7 @@ class MainActivity : AppCompatActivity() {
         aleatorio = java.util.Random().nextInt(10)
         saleatorio = aleatorio.toString()
         misDatos.aleatorio = aleatorio
-        texto = Toast.makeText(applicationContext, "Numero generado: "+aleatorio, Toast.LENGTH_SHORT)
+        //texto = Toast.makeText(applicationContext, "Numero generado: "+aleatorio, Toast.LENGTH_SHORT)
         Log.d(TAG, "Numero Aleatorio: " + misDatos.aleatorio)
 
 
@@ -84,6 +77,7 @@ class MainActivity : AppCompatActivity() {
 
         //Boton de la plantilla que envia la informacion a la base de datos
         fab.setOnClickListener { view ->
+            //Recogemos el texto de la caja
             snumeroJugador = cajaNum.text.toString()
             numeroJugador = snumeroJugador.toInt()
             misDatos.numeroJugador = numeroJugador
@@ -137,12 +131,13 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onChildChanged(p0: DataSnapshot, p1: String?) {
-                git
+
                 // creo un objeto para recojer los datos cambiados
                 var misDatosCambiados = Datos("","", numeroJugador, aleatorio, Date())
 
+                //Mosrtramos los numeros que han sido utilizados
                 cajaMostrar.append("Numero Elegido: "+numeroJugador.toString()+"\n")
-                cajaMostrar.append("Numero Aleatorio: "+aleatorio.toString()+"\n")
+                //cajaMostrar.append("Numero Aleatorio: "+aleatorio.toString()+"\n")
 
                 // introduzco en el objeto los datos cambiados que vienen en el snapshot
                 // muestro datos desde el objeto
@@ -158,6 +153,7 @@ class MainActivity : AppCompatActivity() {
 
                 }else{
                     nintentos --
+                    //Comprobamos si se han agotado los intentos
                     if(nintentos == 0){
                         texto = Toast.makeText(applicationContext,"HAS PERDIDO", Toast.LENGTH_SHORT)
                         texto.show()
